@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm kiếm</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+</head>
+<body class="main-layout position_head">
+<header>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <a href="index.html"><img src="images/logo2.png" alt="#" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="index.html">Trang chủ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.html">Giới thiệu</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="product.html">Sản phẩm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Liên hệ</a>
+                                </li>
+                                <li class="nav-item d_none login_btn">
+                                    <a class="nav-link" href="signin.html">Đăng nhập</a>
+                                </li>
+                                <li class="nav-item d_none">
+                                    <a class="nav-link" href="register.html">Đăng kí</a>
+                                </li>
+                                <li class="nav-item d_none sea_icon">
+                                    <a class="nav-link" href="search.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i><i class="fa fa-search" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header ">Tìm kiếm sản phẩm</div>
+                <div class="card-body">
+                    <form method="GET" action="search_results.html">
+                        <div class="form-group">
+                            <label for="search">Tên sản phẩm</label>
+                            <input id="name_search" type="text" class="form-control" name="search" required autofocus>
+                            <span id="tbname_search"> </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="search">Hãng</label>
+                            <input id="product_search" type="text" class="form-control" name="search" required autofocus>
+                            <span id="tbproduct_search"> </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="search">Thông số kĩ thuật</label>
+                            <input id="info_search" type="text" class="form-control" name="search" required autofocus>
+                            <span id="tbinfo_search"> </span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="price_range">Khoảng giá</label>
+                            <input type="range" class="form-control-range" id="price_range" name="price_range" min="0" max="1000" value="0">
+                            <span id="price_display">500000</span>
+                        </div>
+                        
+
+                        <div class="form-group mb-0">
+                            <button id="btnSumit" type="submit" class="btn btn-primary">
+                                Tìm kiếm 
+                            </button>
+                            <span id="tbbtn_search"> </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <ul class="location_icon">
+                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a><br> Vị trí</li>
+                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a><br> +84 399026084</li>
+                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> dktran004@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var priceRange = document.getElementById('price_range');
+        var priceDisplay = document.getElementById('price_display');
+
+        // Đặt lại giá trị mặc định của thanh trượt
+        priceRange.min = 500000;
+        priceRange.max = 30000000;
+        priceRange.value = 500000;
+        priceDisplay.textContent = priceRange.value;
+
+        // Lắng nghe sự kiện input của thanh trượt
+        priceRange.addEventListener('input', function() {
+            // Hiển thị giá trị hiện tại của thanh trượt lên trang
+            priceDisplay.textContent = priceRange.value;
+        });
+    });
+
+    $(document).ready(function() {
+        
+        // tim kiem ten
+        function kiemTraTenSanPham() {
+            // var kt = /^[a-z0-9_-]{3,16}$/;
+                if ($("#name_search").val() == "") {
+                    $("#tbname_search").html("*Bắt buộc nhập !!");
+                    $("#tbname_search").addClass("mauDo");
+                    return false;
+                }
+                $("#tbname_search").html("");
+                return true;
+        }
+        $("#name_search").blur(kiemTraTenSanPham);
+
+        // tim kiem hANG
+        function kiemTraTenHang() {
+            // var kt = /^[a-z0-9_-]{3,16}$/;
+                if ($("#product_search").val() == "") {
+                    $("#tbproduct_search").html("*Bắt buộc nhập !!");
+                    $("#tbproduct_search").addClass("mauDo");
+                    return false;
+                }
+                $("#tbproduct_search").html("");
+                return true;
+        }
+        $("#product_search").blur(kiemTraTenHang);
+
+        $("#btnSumit").click(function() {
+                if(!kiemTraTenHang() || !kiemTraTenSanPham()){
+                    $("#tbbtn_search").html("*Nhập các thông tin cần kiếm");
+                    $("#tbbtn_search").addClass("mauDo");
+                    return false; 
+                    
+                }
+                window.location.href = "product1.html";
+                return false;
+        });
+    });
+</script>
+</body>
+</html>

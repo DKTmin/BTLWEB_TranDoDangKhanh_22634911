@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+<body class="main-layout position_head">
+<div class="loader_bg">
+    <div class="loader"><img src="images/loading.gif" alt="#" /></div>
+</div>
+<header>
+    <div class="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                    <div class="full">
+                        <div class="center-desk">
+                            <div class="logo">
+                                <a href="index.html"><img src="images/logo2.png" alt="#" /></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                    <nav class="navigation navbar navbar-expand-md navbar-dark ">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="index.html">Trang chủ</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="about.html">Giới thiệu</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="product.html">Sản phẩm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="contact.html">Liên hệ</a>
+                                </li>
+                                <li class="nav-item d_none login_btn">
+                                    <a class="nav-link" href="signin.html">Đăng nhập</a>
+                                </li>
+                                <li class="nav-item d_none">
+                                    <a class="nav-link" href="#">Đăng kí</a>
+                                </li>
+                                <li class="nav-item d_none sea_icon">
+                                    <a class="nav-link" href="search.html"><i class="fa fa-shopping-bag" aria-hidden="true"></i><i class="fa fa-search" aria-hidden="true"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header ">Đăng ký</div>
+                <div class="card-body">
+                    <form method="POST" action="{{ route('register') }}">
+                        <div class="form-group">
+                            <label for="name">Tên</label>
+                            <input id="name" type="text" class="form-control" name="name" value="" required autofocus>
+                            <span id="tbName"> </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input id="email" type="email" class="form-control" name="email" value="" required>
+                            <span id="tbEmail"> </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Mật khẩu</label>
+                            <input id="password" type="password" class="form-control" name="password" required autocomplete="new-password">
+                            <span id="tbPW"> </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirm">Xác nhận mật khẩu</label>
+                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                            <span id="tbPWC"> </span>
+                        </div>
+                        <div class="form-group mb-0">
+                            <button type="submit" class="btn btn-primary" id="btnSumit">
+                                Đăng ký
+                            </button>
+                            <span id="tbRegister"> </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2">
+                    <ul class="location_icon">
+                        <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i></a><br> Vị trí</li>
+                        <li><a href="#"><i class="fa fa-phone" aria-hidden="true"></i></a><br> +84 399026084</li>
+                        <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i></a><br> dktran004@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/jquery-3.0.0.min.js"></script>
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="js/custom.js"></script>
+<script>
+    $(document).ready(function() {
+        // kiểm tra tên
+        function kiemTraName() {
+            var kt = /^[a-z0-9_-]{3,16}$/;
+                if ($("#name").val() == "") {
+                    $("#tbName").html("*Bắt buộc nhập !!");
+                    $("#tbName").addClass("mauDo");
+                    return false;
+                }
+                if (!kt.test($("#name").val())) {
+                    $("#tbName").html("*Tên không có kí tự đặc biệt");
+                    $("#tbName").addClass("mauDo");
+                    return false;
+                }
+                $("#tbName").html("");
+                return true;
+
+        }
+        $("#name").blur(kiemTraName);
+
+        // kiểm tra email
+        function kiemTraEmail() {
+            var kt = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+                if ($("#email").val() == "") {
+                    $("#tbEmail").html("*Bắt buộc nhập !!");
+                    $("#tbEmail").addClass("mauDo");
+                    return false;
+                }
+                if (!kt.test($("#email").val())) {
+                    $("#tbEmail").html("*Nhập email có dạng abc09@gmail.com");
+                    $("#tbEmail").addClass("mauDo");
+                    return false;
+                }
+                $("#tbEmail").html("");
+                return true;
+
+        }
+        $("#email").blur(kiemTraEmail);
+
+        // kiêm tra password
+        function kiemTraPW() {
+        var kt = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
+            if ($("#password").val() == "") {
+                $("#tbPW").html("*Bắt buộc nhập !!");
+                $("#tbPW").addClass("mauDo");
+                return false;
+            }
+            if (!kt.test($("#password").val())) {
+                    $("#tbPW").html("*Chứa kí tự đặc biệt, số, viết hoa và ít nhất 8 kí tự");
+                    $("#tbPW").addClass("mauDo");
+                    return false;
+            }
+            $("#tbPW").html("");
+            return true;
+        }
+        $("#password").blur(kiemTraPW);
+
+        // kiêm tra xac nhan pass
+        function kiemTraPWC() {
+            var pwc = $("#password").val();
+            if ($("#password-confirm").val() != pwc) {
+                $("#tbPWC").html("*Mật khẩu không giống nhau");
+                $("#tbPWC").addClass("mauDo");
+                return false;
+            }
+            $("#tbPWC").html("");
+            return true;
+        }
+        $("#password-confirm").blur(kiemTraPWC);
+
+        // su kien dang nhap
+        $("#btnSumit").click(function() { 
+                if(!kiemTraName() ||!kiemTraEmail() || !kiemTraPW() || !kiemTraPWC()){
+                    $("#tbRegister").html("*Nhập đầy đủ thông tin");
+                    $("#tbRegister").addClass("mauDo");
+                    return false; 
+                }
+                $("#tbRegister").html("");
+                window.location.href = "signin.html";
+                
+
+                // Tạo đối tượng chứa thông tin người dùng
+                var userInfo = {
+                    name: $("#name").val(),
+                    email: $("#email").val(),
+                    password: $("#password").val()
+                };
+
+                // Chuyển đối tượng thành chuỗi JSON và lưu vào localStorage
+                localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+                var len = localStorage.length; 
+                
+                for(var i=0; i<len;i++){ 
+                    var key = localStorage.key(i); 
+                    var userInfoJSON = localStorage.getItem(key);
+                    var userInfo = JSON.parse(userInfoJSON);
+                    alert("Tên: " + userInfo.name + "\nEmail: " + userInfo.email);
+                }
+
+                return false;
+        });
+    });
+
+</script>
+</body>
+</html>
